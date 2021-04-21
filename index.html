@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>photo2cartoon</title>
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+
+<body>
+    <h1>图片卡通化</h1>
+    <label class="input-button" for="image_input">选择图片</label>
+    <input type="file" id="image_input" name="image_input" accept="image/png, image/jpeg, image/jpg">
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>
