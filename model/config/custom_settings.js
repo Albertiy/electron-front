@@ -1,3 +1,4 @@
+/** 没什么用 */
 const { app } = require('electron');
 
 class CustomSettings {

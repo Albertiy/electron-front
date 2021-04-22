@@ -1,11 +1,11 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
 
-const { ipcRenderer, contextBridge } = require('electron')
+const { ipcRenderer, contextBridge, net } = require('electron')
 const exec = require('child_process').exec
 const cmdStr = 'test.exe';
 
-let SETOBJ = {
+let SET_OBJ = {
     CMD_PATH: 'D:/MyWorkspace/GitHub/photo2cartoon/dist/test/'
 };
 
@@ -15,24 +15,37 @@ contextBridge.exposeInMainWorld('myAPI', {
         console.log('\n图片路径：' + filePath, '保存路径' + savePath);
         let cstr = cmdStr + ' --photo_path "' + filePath + '" --save_path "' + savePath + '"';
         console.log('\n命令：', cstr);
-        runExec(cstr, SETOBJ.CMD_PATH);
+        runExec(cstr, SET_OBJ.CMD_PATH);
     }
 });
 
 /** 获取设置 */
 async function acceptSettings() {
-    let res = ipcRenderer.sendSync('get_settings'); // 不会栗姬在此回应
+    let res = ipcRenderer.sendSync('get_settings');
     console.log('回应设置：', res);
-    SETOBJ = res;
-    console.log('获取设置完成：', JSON.stringify(SETOBJ));
+    SET_OBJ = res;
+    console.log('获取设置完成：', JSON.stringify(SET_OBJ));
 }
+
 /**
  * 页面初始化方法
  */
 window.addEventListener('DOMContentLoaded', (res) => {
     console.log('[WINDOW DOMContentLoaded]')
-    console.log(res)
     acceptSettings();
+    clientRequest = net.request("www.baidu.com")
+    clientRequest.on('response', (response) => {
+        console.log(`STATUS: ${response.statusCode}`)
+        console.log(`HEADERS: ${JSON.stringify(response.headers)}`)
+        response.on('data', (chunk) => {
+            console.log(`BODY: ${chunk}`)
+        })
+        response.on('end', () => {
+            console.log('No more data in response.')
+        })
+    })
+    request.end()
+
     // const replaceText = (selector, text) => {
     //     const element = document.getElementById(selector)
     //     if (element) element.innerText = text
@@ -43,6 +56,7 @@ window.addEventListener('DOMContentLoaded', (res) => {
     // }
 
 })
+
 /** 
  * runExec 执行命令行
  * @param {string} cmdStr 命令

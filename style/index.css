@@ -1,0 +1,153 @@
+:root {
+    --color-dark-black: #2b2b2b;
+    --color-light-black: #4b4b4b;
+    --color-dark-green: #3cdb74;
+    --color-light-green: #32ff7e;
+    --color-light-gray: #d2dae2;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.comet {
+    background-color: #646770;
+    background-image:
+        linear-gradient(0deg, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%),
+        radial-gradient(at 50% 87%, rgba(255, 255, 255, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%);
+
+    background-blend-mode: multiply, normal;
+}
+
+body {
+    height: 100vh;
+    min-width: 12rem;
+    min-height: 4rem;
+}
+
+.container {
+    padding: 2rem;
+}
+
+@media (max-width: 20rem) {
+    .container {
+        padding: 1rem;
+    }
+}
+
+h1 {
+    color: var(--color-light-gray);
+    margin-bottom: 1.5rem;
+}
+
+.input-button {
+    position: relative;
+    padding: 0.3rem 2rem 0.4rem;
+    border: 0.15rem solid var(--color-dark-green);
+    border-radius: 2rem;
+    background: var(--color-dark-black);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--color-dark-green);
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition: border-radius 0.75s, padding 0.75s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    user-select: none;
+}
+
+.input-button:hover {
+    padding: 0.3rem 2rem 0.4rem;
+    border-color: var(--color-light-green);
+    border-radius: 0.4rem;
+    background: var(--color-light-black);
+    color: var(--color-light-green);
+    cursor: pointer;
+}
+
+#image_input {
+    visibility: hidden;
+    width: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 40rem;
+    position: relative;
+    flex-direction: row;
+    padding: 1rem 0 1rem;
+}
+
+.src-img-container {
+    width: 15rem;
+    height: 20rem;
+    border-width: 0.35rem;
+    border-style: dashed;
+    border-color: var(--color-dark-black);
+    border-radius: 1rem;
+    margin-top: 0.75rem;
+    position: relative;
+    transition: border-color ease-in 0.32s;
+}
+
+.src-img-container.dragover {
+    border-color: var(--color-light-green);
+}
+
+@media (max-width : 38rem) {
+    .vertical-line {
+        display: none;
+    }
+}
+
+.vertical-line {
+    height: 20rem;
+    margin-top: 1rem;
+    border: 0.04rem solid var(--color-light-gray);
+}
+
+.permalink-light {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
+    background: #ffffff;
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+.src-img {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+}
+
+.src-img-alter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: var(--color-light-black);
+}
+
+.src-img-alter::after {
+    position: absolute;
+    content: "或者拖动图片到此处";
+    font-size: 0.3rem;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6.8rem;
+}

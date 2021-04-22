@@ -1,9 +1,37 @@
 /** @constant 打开图片按钮 @type HTMLInputElement */
 const imageInput = document.getElementById('image_input');
+let srcImageContainer = document.getElementById('src_img_container');
+let srcImage = document.getElementById('src_img');
 
 window.onload = function () {
     console.log('[index.js: onload]');
     imageInput.addEventListener('change', imageInputChanged);
+    // 文件拖拽进入
+    srcImage.addEventListener('dragenter', event => {
+        console.log('[EVENT] - dragenter -');
+        switchClass(srcImageContainer, 'dragover', true);
+    }, false);
+
+    // 文件拖拽离开
+    srcImage.addEventListener('dragleave', event => {
+        console.log('[EVENT] - dragleave -');
+        if (srcImageContainer.classList.contains('dragover'))
+            srcImageContainer.classList.remove('dragover');
+    }, false);
+
+    srcImage.addEventListener('dragend', event => {
+        console.log('[EVENT] - dragleave -');
+        if (srcImageContainer.classList.contains('dragover'))
+            srcImageContainer.classList.remove('dragover');
+    }, false);
+
+    // 文件拖拽放下
+    srcImage.addEventListener('drop', event => {
+        console.log('[EVENT] - drop -');
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    }, false);
 }
 
 /**
@@ -34,4 +62,17 @@ function generateUUID() {
         return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
     return uuid;
+};
+
+/**
+ * 
+ * @param {*} ele 
+ * @param {*} className 
+ * @param {boolean} state 添加还是移除
+ */
+function switchClass(ele, className, state) {
+    if (state && !ele.classList.contains(className))
+        ele.classList.add(className);
+    else if (!state && ele.classList.contains(className))
+        ele.classList.remove(className);
 };
