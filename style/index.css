@@ -43,6 +43,14 @@ body {
     min-height: 4rem;
 }
 
+.background {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 .container {
     padding: 2rem;
 }
@@ -101,7 +109,8 @@ h1 {
 }
 
 #image_input {
-    visibility: hidden;
+    opacity: 0;
+    /* visibility: hidden; */
     width: 0;
 }
 
@@ -120,13 +129,14 @@ h1 {
 .src-img-container {
     width: 15rem;
     height: 20rem;
-    border-width: 0.35rem;
-    border-style: dashed;
+    border-width: 1px;
+    border-style: solid;
     border-color: var(--color-dark-black);
-    border-radius: 1rem;
+    /* box-shadow: ; */
+    /* border-radius: 1rem; */
     margin-top: 0.75rem;
     position: relative;
-    transition: border-color ease-in 0.32s;
+    transition: box-shadow ease-in 0.32s;
 }
 
 .src-img-container.dragover {
@@ -152,6 +162,8 @@ h1 {
     height: 100%;
     width: 100%;
     border-radius: inherit;
+    object-fit: contain;
+    pointer-events: none;
 }
 
 .src-img-alter {
@@ -163,6 +175,8 @@ h1 {
     transform: translate(-50%, -50%);
     font-size: 3rem;
     color: var(--color-light-black);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .src-img-alter::after {

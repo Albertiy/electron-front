@@ -17,15 +17,18 @@
         <input type="file" id="image_input" name="image_input" accept="image/png, image/jpeg, image/jpg">
         <div class="content">
             <div class="src-img-container" id="src_img_container">
-                <div class="src-img-alter">+</div>
                 <img class="src-img permalink-light" id="src_img">
+                <div class="src-img-alter">+</div>
             </div>
             <div class="vertical-line"></div>
             <div class="src-img-container"></div>
         </div>
     </div>
+    <!-- 背景动画 -->
+    <canvas class="background"></canvas>
     <!-- You can also require other files to run in this process -->
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/particles.min.js"></script>
 </body>
 
 </html>
