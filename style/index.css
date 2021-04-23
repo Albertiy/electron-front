@@ -37,6 +37,20 @@
     /* IE6-9 fallback on horizontal gradient */
 }
 
+.permalink-dark {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
+    background: #7d7e7d;
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #7d7e7d 0%, #0e0e0e 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #7d7e7d 0%, #0e0e0e 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #7d7e7d 0%, #0e0e0e 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d7e7d', endColorstr='#0e0e0e', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
 body {
     height: 100vh;
     min-width: 12rem;
@@ -114,6 +128,17 @@ h1 {
     width: 0;
 }
 
+.header-content {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 40rem;
+    position: relative;
+    flex-direction: row;
+}
+
 .content {
     display: flex;
     justify-content: space-between;
@@ -129,18 +154,21 @@ h1 {
 .src-img-container {
     width: 15rem;
     height: 20rem;
-    border-width: 1px;
+    border-width: 0;
+    /* 边框为0，否则内容会有白边 */
     border-style: solid;
     border-color: var(--color-dark-black);
-    /* box-shadow: ; */
-    /* border-radius: 1rem; */
+    border-radius: 3px;
     margin-top: 0.75rem;
     position: relative;
-    transition: box-shadow ease-in 0.32s;
+    box-shadow: 0.1rem 0.1rem 0.5rem #2b2b2b8c, -1px -1px 0.5rem #3a3a3a8c;
+    /* transition: border ease-in 0.32s; */
+    transition: box-shadow ease-out 0.6s;
 }
 
 .src-img-container.dragover {
-    border-color: var(--color-light-green);
+    /* border-color: var(--color-light-gray); */
+    box-shadow: 0.1rem 0.1rem 1rem #2b2b2b8c, -1px -1px 1rem #3a3a3a8c;
 }
 
 @media (max-width : 38rem) {
@@ -159,11 +187,13 @@ h1 {
 }
 
 .src-img {
+    position: relative;
     height: 100%;
     width: 100%;
     border-radius: inherit;
     object-fit: contain;
     pointer-events: none;
+    z-index: 2;
 }
 
 .src-img-alter {
@@ -176,7 +206,7 @@ h1 {
     font-size: 3rem;
     color: var(--color-light-black);
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
 }
 
 .src-img-alter::after {
@@ -187,4 +217,42 @@ h1 {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.src-img-container #out_img {
+    position: relative;
+    box-shadow: none;
+    border-radius: inherit;
+    border: none;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* .out-img-container::after {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: var(--color-light-black);
+    z-index: 0;
+} */
+
+.src-img-container.out-img-container::after {
+    content: "这里显示生成结果\D\A(如果有)";
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 3rem;
+    color: var(--color-light-gray);
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    text-align: center;
 }

@@ -13,15 +13,19 @@
 <body class="comet">
     <div class="container">
         <h1>图片卡通化</h1>
-        <label class="input-button" for="image_input">选择图片</label>
-        <input type="file" id="image_input" name="image_input" accept="image/png, image/jpeg, image/jpg">
+        <div class="header-content">
+            <label class="input-button" for="image_input">选择图片</label>
+            <input type="file" id="image_input" name="image_input" accept="image/png, image/jpeg, image/jpg">
+        </div>
         <div class="content">
-            <div class="src-img-container" id="src_img_container">
-                <img class="src-img permalink-light" id="src_img">
+            <div class="src-img-container permalink-light" id="src_img_container">
                 <div class="src-img-alter">+</div>
+                <img class="src-img " id="src_img">
             </div>
             <div class="vertical-line"></div>
-            <div class="src-img-container"></div>
+            <div class="src-img-container out-img-container permalink-dark" id="out_img_container">
+                <img class="out-img" id="out_img">
+            </div>
         </div>
     </div>
     <!-- 背景动画 -->

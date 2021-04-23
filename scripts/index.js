@@ -26,10 +26,10 @@ window.onload = function () {
     Particles.init({
         selector: '.background',
         maxParticles: 450,
-        // options for breakpoints
+        // options for breakpoints 按不同页面宽度设置样式
         responsive: [
             {
-                breakpoint: 768,
+                breakpoint: 1366,
                 options: {
                     maxParticles: 56,
                     color: '#6F6F6F',
@@ -38,13 +38,15 @@ window.onload = function () {
             }, {
                 breakpoint: 425,
                 options: {
-                    maxParticles: 100,
+                    maxParticles: 21,
+                    color: '#6F6F6F',
                     connectParticles: true
                 }
             }, {
                 breakpoint: 320,
                 options: {
-                    maxParticles: 0
+                    maxParticles: 0,
+                    color: '#6F6F6F',
                     // disables particles.js
                 }
             }
