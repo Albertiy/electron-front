@@ -23,6 +23,20 @@
     background-blend-mode: multiply, normal;
 }
 
+.permalink-light {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
+    background: #ffffff;
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
 body {
     height: 100vh;
     min-width: 12rem;
@@ -42,6 +56,7 @@ body {
 h1 {
     color: var(--color-light-gray);
     margin-bottom: 1.5rem;
+    text-shadow: #000000 0 0.1rem 0.5rem;
 }
 
 .input-button {
@@ -57,6 +72,8 @@ h1 {
     transition: border-radius 0.75s, padding 0.75s;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     user-select: none;
+    text-shadow: #000000 0 0.1rem 0.5rem;
+    box-shadow: #000000 0 0.1rem 0.5rem;
 }
 
 .input-button:hover {
@@ -66,6 +83,21 @@ h1 {
     background: var(--color-light-black);
     color: var(--color-light-green);
     cursor: pointer;
+}
+
+.input-button::before {
+    position: absolute;
+    border-radius: inherit;
+    top: -0.15rem;
+    right: -0.15rem;
+    bottom: -0.15rem;
+    left: -0.15rem;
+    /* z-index: -1; */
+    background: rgba(0, 0, 0, 0.28);
+}
+
+.input-button:active::before {
+    content: '';
 }
 
 #image_input {
@@ -110,21 +142,10 @@ h1 {
 .vertical-line {
     height: 20rem;
     margin-top: 1rem;
-    border: 0.04rem solid var(--color-light-gray);
-}
-
-.permalink-light {
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
-    background: #ffffff;
-    /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=1);
-    /* IE6-9 fallback on horizontal gradient */
+    background-color: var(--color-light-black);
+    border: 0.04rem solid var(--color-light-black);
+    border-radius: 50%;
+    box-shadow: #000000 0 0 0.08rem;
 }
 
 .src-img {
@@ -135,8 +156,10 @@ h1 {
 
 .src-img-alter {
     position: absolute;
+    width: 100%;
     top: 50%;
     left: 50%;
+    text-align: center;
     transform: translate(-50%, -50%);
     font-size: 3rem;
     color: var(--color-light-black);
@@ -145,9 +168,9 @@ h1 {
 .src-img-alter::after {
     position: absolute;
     content: "或者拖动图片到此处";
-    font-size: 0.3rem;
+    display: inline-block;
+    font-size: 0.7rem;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    width: 6.8rem;
 }

@@ -54,6 +54,10 @@ function changeFileName(url, newName) {
     return url.substr(0, url.lastIndexOf("\\") + 1) + newName + url.slice(url.lastIndexOf('.'));
 }
 
+/**
+ * 生成 UUID 唯一编码
+ * @returns {string}
+ */
 function generateUUID() {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -65,10 +69,10 @@ function generateUUID() {
 };
 
 /**
- * 
- * @param {*} ele 
- * @param {*} className 
- * @param {boolean} state 添加还是移除
+ * 切换HTML元素添加或移除CSS类
+ * @param {*} ele HTML元素
+ * @param {*} className CSS类名
+ * @param {boolean} state true 添加，false 移除
  */
 function switchClass(ele, className, state) {
     if (state && !ele.classList.contains(className))
