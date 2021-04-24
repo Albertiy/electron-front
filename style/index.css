@@ -3,6 +3,7 @@
     --color-light-black: #4b4b4b;
     --color-dark-green: #3cdb74;
     --color-light-green: #32ff7e;
+    --color-darker-green: #076e18;
     --color-light-gray: #d2dae2;
 }
 
@@ -84,6 +85,8 @@ h1 {
 .input-button {
     position: relative;
     padding: 0.3rem 2rem 0.4rem;
+    margin-bottom: 0.2rem;
+    margin-right: 2%;
     border: 0.15rem solid var(--color-dark-green);
     border-radius: 2rem;
     background: var(--color-dark-black);
@@ -245,8 +248,8 @@ h1 {
 } */
 
 .src-img-container.out-img-container::after {
-    content: "这里显示生成结果\D\A(如果有)";
-    display: inline-block;
+    content: "这里显示生成结果  (如果有)";
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -255,4 +258,24 @@ h1 {
     transform: translate(-50%, -50%);
     font-size: 0.7rem;
     text-align: center;
+}
+
+.textline {
+    box-sizing: content-box;
+    max-width: 30rem;
+    min-width: 40%;
+    min-height: 1.2rem;
+    margin-bottom: 0.2rem;
+    padding: 0.3rem 2rem 0.4rem;
+    border-top: 0.15rem solid var(--color-darker-green);
+    border-right: 0.15rem solid var(--color-darker-green);
+    border-left: 0.15rem solid var(--color-dark-green);
+    border-bottom: 0.15rem solid var(--color-dark-green);
+    border-radius: 0.4rem;
+    background-color: var(--color-dark-black);
+    box-shadow: var(--color-dark-black) 0 0.1rem 1.5rem;
+    text-shadow: var(--color-light-black) 0 0.1rem 0.5rem;
+    color: var(--color-light-gray);
+    text-overflow: ellipsis;
+    pointer-events: none;
 }
